@@ -1,14 +1,13 @@
 from fastapi import FastAPI, UploadFile, File
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from utils.preprocess import preprocess_input
-from utils.genomic_analysis import process_genomic_data
+from .utils.preprocess import preprocess_input
+from .utils.genomic_analysis import process_genomic_data
 
 app = FastAPI()
 
-# Load the Nemotron-70B model
-model_path = "~/models/nemotron-70b/"
-tokenizer = AutoTokenizer.from_pretrained(model_path)
-model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto")
+# Load the Nemotron-70B model using NeMo
+model = AutoModelForCausalLM.from_pretrained("nvidia/nemotron-3-8b-base-4k")
+tokenizer = AutoTokenizer.from_pretrained("nvidia/nemotron-3-8b-base-4k")
 
 def analyze_symptoms(symptoms: str) -> str:
     input_text = preprocess_input(symptoms)

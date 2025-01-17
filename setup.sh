@@ -21,4 +21,4 @@ pip3 install torch torchvision torchaudio --extra-index-url https://download.pyt
 echo "##### Installing FastAPI and Uvicorn #####"
 pip3 install fastapi uvicorn
 
-echo "##### Environment Setup Complete #####"
+echo "##### Environment Setup Complete #####" 
